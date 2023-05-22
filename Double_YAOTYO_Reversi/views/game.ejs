@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ダブル八百長オセロ</title>
+    <link id="cssLink" rel="stylesheet" href="/css/style_neon.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+    <script src="/index.js"></script>
+    <!-- <script src="/send_url.js"></script> -->
+  </head>
+  <body class="body-game">
+    <header class="game-header">
+        <a href="/" class="header-logo">YAOTYO Reversi</a>
+    </header>
+    <div id="menu-box" >
+        <ul >
+            <li><a class="menu">menu<span>▼</span></a>
+                <ul>
+                    <!-- スイッチの追加 -->
+                    <li><a id="AIpreceeding">先行をAIに譲渡する</a></li>
+
+                    <li><a id="oneTurnBefore" onclick="oneTurnBefore()">1ターン戻る</a></li>
+
+                    <li><a>石を置ける場所の表示<input type="checkbox" id="assistantSwitch"></a></li>
+                    <li><a>盤面選択<span>▼</span></a>
+                        <ul>
+                            <li><a onclick="changeCSS('default')">デフォルト盤面</a></li>
+                            <li><a onclick="changeCSS('silver')">シルバー</a></li>
+                            <li><a onclick="changeCSS('neon')">ネオン</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/game">盤面をリセット</a></li>
+                    <li><a href="/">スタート画面に戻る</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="stage" class="stage">現在の手番は<span id="current-turn">黒</span>です</div>
+    <div class="number-horizontal"> 0 1 2 3 4 5 <span class="six">6</span> 7</div>
+    <div class="number-vertical"> <div>0</div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div></div>
+
+    <!-- 盤 -->
+    <table  class="table">
+        <!-- 1行 -->
+        <tr>
+            <td id="cell0">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell1">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell2">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell3">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell4">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell5">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell6">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell7">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+        <!-- 2行 -->
+        <tr>
+            <td id="cell8">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell9">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell10">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell11">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell12">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell13">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell14">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell15">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+        <!-- 3行 -->
+        <tr>
+            <td id="cell16">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell17">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell18">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell19">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell20">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell21">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell22">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell23">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+        <!-- 4行 -->
+        <tr>
+            <td id="cell24">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell25">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell26">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell27">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell28">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell29">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell30">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell31">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+        <!-- 5行 -->
+        <tr>
+            <td id="cell32">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell33">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell34">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell35">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell36">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell37">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell38">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell39">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+        <tr>
+            <td id="cell40">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell41">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell42">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell43">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell44">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell45">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell46">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell47">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+        <tr>
+            <td id="cell48">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell49">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell50">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell51">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell52">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell53">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell54">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell55">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+        <tr>
+            <td id="cell56">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell57">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell58">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell59">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell60">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell61">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell62">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+            <td id="cell63">
+                <button type="button" class="osero" onclick="sendCoordinates(this.parentNode)"></button>
+                <div class="stone"></div>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        const assistantSwitch = document.getElementById('assistantSwitch');
+
+        // スイッチの状態が変更された時に実行する処理
+        assistantSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            console.log("スイッチon");
+            applyColorToCells();
+        } else {
+            console.log("スイッチoff");
+            resetColorOfCells();
+        }
+        });
+    </script>
+    
+    <div class="log"><a class="log-text">GAM<span class="e">E</span> LOG</a>
+
+    <div class="log-window">
+        <p><span id=log-0></span></p>
+        <p><span id=log-1></span></p>
+        <p><span id=log-2></span></p>
+        <p><span id=log-3></span></p>
+        <p><span id=log-4></span></p>
+        <p><span id=log-5></span></p>
+        <p><span id=log-6></span></p>
+        <p><span id=log-7></span></p>
+        <p><span id=log-8></span></p>
+        <p><span id=log-9></span></p>
+        <p><span id=log-10></span></p>
+        <p><span id=log-11></span></p>
+        <p><span id=log-12></span></p>
+        <p><span id=log-13></span></p>
+        <p><span id=log-14></span></p>
+        <p><span id=log-15></span></p>
+        <p><span id=log-16></span></p>
+        <p><span id=log-17></span></p>
+        <p><span id=log-18></span></p>
+        <p><span id=log-19></span></p>
+        <p><span id=log-20></span></p>
+        <p><span id=log-21></span></p>
+        <p><span id=log-22></span></p>
+        <p><span id=log-23></span></p>
+        <p><span id=log-24></span></p>
+        <p><span id=log-25></span></p>
+        <p><span id=log-26></span></p>
+        <p><span id=log-27></span></p>
+        <p><span id=log-28></span></p>
+        <p><span id=log-29></span></p>
+        <p><span id=log-30></span></p>
+        <p><span id=log-31></span></p>
+        <p><span id=log-32></span></p>
+        <p><span id=log-33></span></p>
+        <p><span id=log-34></span></p>
+        <p><span id=log-35></span></p>
+        <p><span id=log-36></span></p>
+        <p><span id=log-37></span></p>
+        <p><span id=log-38></span></p>
+        <p><span id=log-39></span></p>
+        <p><span id=log-40></span></p>
+        <p><span id=log-41></span></p>
+        <p><span id=log-42></span></p>
+        <p><span id=log-43></span></p>
+        <p><span id=log-44></span></p>
+        <p><span id=log-45></span></p>
+        <p><span id=log-46></span></p>
+        <p><span id=log-47></span></p>
+        <p><span id=log-48></span></p>
+        <p><span id=log-49></span></p>
+        <p><span id=log-50></span></p>
+        <p><span id=log-51></span></p>
+        <p><span id=log-52></span></p>
+        <p><span id=log-53></span></p>
+        <p><span id=log-54></span></p>
+        <p><span id=log-55></span></p>
+        <p><span id=log-56></span></p>
+        <p><span id=log-57></span></p>
+        <p><span id=log-58></span></p>
+        <p><span id=log-59></span></p>
+        <p><span id=log-60></span></p>
+        <p><span id=log-61></span></p>
+        <p><span id=log-62></span></p>
+        <p><span id=log-63></span></p>
+    </div>
+    </div>
+    <div class="display1">
+        あなた <div class="display-blackstone" ></div> 
+        <!-- pではなくdivを使うとエラーを吐いた -->
+        <p class="display"><span id="black-num">2</span>個</p>
+    </div>
+    <div class="display2">
+        OpenAI <div class="display-whitestone" ></div>
+        <p class="display"><span id="white-num">2</span>個</p>
+    </div>
+
+    <script>
+        const currentBlackNum = document.getElementById("black-num");
+        const currentWhiteNum = document.getElementById("white-num");
+        const AIpreceeding = document.getElementById('AIpreceeding');
+        // AIpreceedingをクリックされた時にAIに先行を譲渡
+        AIpreceeding.addEventListener('click', function(){
+            // 初期状態（石が合計4個）の時のみ使用可能
+            if (Number(currentBlackNum.textContent)+Number(currentWhiteNum.textContent)===4){
+                console.log('AIに先行が譲渡されました');
+                AIClickBoard();
+            } else{
+                alert('いんちきするな！バグ取り大変なんやぞ、空気を読め！');
+            }
+        });
+    </script>
+
+    <!-- <button id="modalOpenwin" class="button-test">WIN</button>
+    <button id="modalOpenlose" class="button-test">LOSE</button> -->
+    <div id="easyModal-win" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 style="text-align:center">YOU LOSE!</h1>
+            <span class="modalClose">×</span>
+          </div>
+          <div class="modal-body">
+            <p>君の勝ち！</p>
+            <p>どうしたら負けられるか明日まで考えといてください。</p>
+          </div>
+          <div class="modal-footer">
+            <a href="/game" class ="btn-gray btn-gray1 pop-up-button"><span class="sankaku">▷</span>もう一度遊ぶ</a>
+            <a href="/" class ="btn-gray btn-gray2 pop-up-button"><span class="sankaku">▷</span>スタート画面に戻る</a>
+          </div>
+        </div>
+    </div>
+    <div id="easyModal-lose" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 style="text-align:center">YOU WIN!</h1>
+            <span class="modalClose">×</span>
+          </div>
+          <div class="modal-body">
+            <p>君の負け！</p>
+            <p>八百長うまくいって今どんな気持ち〜？</p>
+          </div>
+          <div class="modal-footer">
+            <a href="/game" class ="btn-gray btn-gray1 pop-up-button"><span class="sankaku">▷</span>もう一度遊ぶ</a>
+            <a href="/" class ="btn-gray btn-gray2 pop-up-button"><span class="sankaku">▷</span>スタート画面に戻る</a>
+          </div>
+        </div>
+    </div>
+    <div id="easyModal-draw" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 style="text-align:center">DRAW!</h1>
+            <span class="modalClose">×</span>
+          </div>
+          <div class="modal-body">
+            <p>おっと！引き分けのようです。</p>
+            <p>オセロで引き分けになる確率って相当低くね？</p>
+          </div>
+          <div class="modal-footer">
+            <a href="/game" class ="btn-gray btn-gray1 pop-up-button"><span class="sankaku">▷</span>もう一度遊ぶ</a>
+            <a href="/" class ="btn-gray btn-gray2 pop-up-button"><span class="sankaku">▷</span>スタート画面に戻る</a>
+          </div>
+        </div>
+    </div>
+    <div class="area" >
+        <ul class="circles2">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+  
+       </ul>
+      </div>
+
+    <script>
+        localStorage.removeItem('Resultstrings');
+        console.log('localStorage:',localStorage.getItem('Resultstrings'));
+        ////// ここから、ポップアップのためのテストコード/////
+        
+        const modalwin = document.getElementById('easyModal-win');
+        const modallose = document.getElementById('easyModal-lose');
+        const modaldraw = document.getElementById('easyModal-draw');
+        const buttonClosewin = document.getElementsByClassName('modalClose')[0];
+        const buttonCloselose = document.getElementsByClassName('modalClose')[1];
+        const buttonClosedraw = document.getElementsByClassName('modalClose')[2];
+
+    
+
+        async function sendCoordinates(td) {
+            // console.log('クリックされました');
+            await sleep(3000);
+            // console.log('User後',localStorage.getItem('Resultstrings'));
+            if (localStorage.getItem('Resultstrings') === '1'){
+                modalwin.style.display = 'block';
+            }
+
+            if (localStorage.getItem('Resultstrings') === '-1'){
+                modallose.style.display = 'block';
+            }
+
+            if(localStorage.getItem('Resultstrings') === '0'){
+                modaldraw.style.display = 'block';
+            }
+
+            if (localStorage.getItem('playernumber') === '-1'){
+                // await sleep(3000);
+                await sleep(7000); //AIを使用する場合の待ち時間
+                // console.log('AI後', localStorage.getItem('Resultstrings'));
+                if (localStorage.getItem('Resultstrings') === '1'){
+                    modalwin.style.display = 'block';
+                }
+
+                if (localStorage.getItem('Resultstrings') === '-1'){
+                    modallose.style.display = 'block';
+                }
+
+                if(localStorage.getItem('Resultstrings') === '0'){
+                    modaldraw.style.display = 'block';
+                }
+            }
+        }
+
+        
+
+        // バツ印がクリックされた時
+        buttonClosewin.addEventListener('click', modalClose);
+        buttonCloselose.addEventListener('click', modalClose);
+        buttonClosedraw.addEventListener('click', modalClose);
+
+        function modalClose() {
+            modalwin.style.display = 'none';
+            modallose.style.display = 'none';
+            modaldraw.style.display = 'none';
+        }
+
+        // // モーダルコンテンツ以外がクリックされた時
+        // addEventListener('click', outsideClose);
+        // function outsideClose(e) {
+        //     if (e.target == modal) {
+        //         modal.style.display = 'none';
+        //     }
+        // }
+
+        ///// ポップアップのためのテストコード終わり /////
+    </script>
+  </body>
+</html>

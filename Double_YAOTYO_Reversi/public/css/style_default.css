@@ -1,0 +1,618 @@
+/* header ================================ */
+.game-header {
+    height: 56px;
+    margin-bottom: 50px;
+    z-index: +2;
+    /* border-bottom: 1px solid #f0f4f9; */
+  }
+  
+  .header-logo {
+    text-decoration: none;
+    margin-left: 56px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 56px;
+    color: #6c7686;
+    display: inline;
+    z-index: +2;
+    font-family: "Orbitron";
+  }
+  
+  .header-logo:hover {
+    color: #58d2b2;
+  }
+  
+  
+  /* オセロの石の定義 */
+  .stage{
+    position:fixed;
+    top: 8%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 22%;
+    padding-top: 30px;
+    letter-spacing: 3px;
+  }
+  .osero:hover{
+    background-color: #58d2b2;
+    opacity: 0;
+      animation: ripples_anim 0.5s linear infinite;
+  }
+  @keyframes ripples_anim {
+      0% {
+          opacity: 0;
+      }
+      50% {		
+          opacity: 1;
+      }
+  }
+  #current-turn{
+    font-weight: bold;
+  }
+  .number-horizontal{
+    top: 18%;
+    left: 14%;
+    position:fixed;
+    font-size: 30px;
+    letter-spacing: 15px;
+}
+  .number-vertical{
+    position:fixed;
+    flex-direction: column;
+    top: 24%;
+    left: 10%;
+    font-size: 30px;
+}
+  .number-vertical>div{
+    margin-bottom: 19px;
+  }
+  .table{
+    position: fixed;
+    top: 23%;
+    left: 12%;
+  }
+  td {
+    position:fixed;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0;
+    position: relative;
+  }
+  
+  td:nth-child(1),
+  td:nth-child(2),
+  td:nth-child(3),
+  td:nth-child(4),
+  td:nth-child(5),
+  td:nth-child(6),
+  td:nth-child(7),
+  td:nth-child(8) {
+    /*background: linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);*/
+    background: #0b6d3d;
+    /* background-color: rgba(250, 254, 235, 0.24); */
+    /* background-image: -webkit-linear-gradient(45deg,transparent 60%,rgba(255,255,255,.3) 45%,rgba(255,255,255,.3) 45%,transparent 100%);*/ 
+  }
+  
+  table:nth-of-type(odd){
+    background-color: #242f34;
+  }
+  
+  button.osero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: +1;
+  }
+  
+  button.reset {
+    padding: 100px;
+  }
+  
+  .stone {
+    position: absolute;
+    top: 2.5px;
+    bottom: 0;
+    left: 4.5px;
+    width: 42px;
+    height: 42px;
+    border-radius: 21px;
+    z-index: +3;
+  }
+  
+  .stone[data-state="0"] {
+    display: none;
+  }
+  
+  .stone[data-state="1"] {
+    background-color: black;
+    border-bottom: 2px solid white;
+  }
+  
+  .stone[data-state="-1"] {
+    background-color: white;
+    color: black;
+    border-bottom: 2px solid black;
+  }
+  
+  .display-blackstone {
+    position: relative;
+    top: 2.5px;
+    bottom: 0;
+    left: 4.5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 21px;
+    background-color: black;
+    border-bottom: 2px solid white;
+  }
+  
+  .display-whitestone {
+    position: relative;
+    top: 2.5px;
+    bottom: 0;
+    left: 4.5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 21px;
+    background-color: white;
+    border-bottom: 2px solid black;
+  }
+  
+  .display{
+    font-size: 30px;
+    top: 23px;
+}
+  
+  
+  /* .user-posseible {
+    background-color: pink;
+  } */
+  
+  
+  .display1{
+    font-size: 20px;
+    position: fixed;
+    top:70px;
+    left: 55%;
+    display: flex;
+    flex-direction: row;
+  }
+  .display2{
+    font-size: 20px;
+    position: fixed;
+    top:70px;
+    left: 68%;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
+  .flip_of_black {
+    animation-name: black_active;
+    animation-duration: 0.5s;
+  }
+  .flip_of_white {
+    animation-name: white_active;
+    animation-duration: 0.5s;
+  }
+  
+  @keyframes black_active{
+    0% {
+      transform: perspective(400px) rotateX(0);
+    }
+    50% {
+      transform: perspective(400px) rotateX(90deg);
+    }
+    100% {
+      transform: perspective(400px) rotateX(0);
+      background-color: white;
+      border-bottom: 2px solid black;
+    }
+  }
+  
+  @keyframes white_active{
+    0% {
+      transform: perspective(400px) rotateX(0);
+    }
+    50% {
+      transform: perspective(400px) rotateX(90deg);
+    }
+    100% {
+      transform: perspective(400px) rotateX(0);
+      background-color: black;
+      border-bottom: 2px solid white;
+    }
+  }
+  .log{
+    position: fixed;
+    top: 155px;
+    left: 55%;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    border:5px solid hsl(0, 0%, 100%);
+    background-color: #c6c6c6;
+    border: 5px solid #3c3c3c;
+  }
+  .log-text{
+    position: relative;
+    left: 105px;
+    font-family: "Orbitron";
+  }
+  /* スクロールバーのスタイル設定 */
+  .log-window {
+    height: 450px; /* 小窓の高さ */
+    width: 300px;
+    overflow: auto; /* スクロールバーを表示 */
+    border:2px solid #ccc; /* 枠線を追加 */
+    padding: 10px; /* 内側の余白を設定 */
+  }
+  
+  .body-top{
+    color: white;
+    background-color: black;
+    position: relative;
+    font-family: 'Orbitron';
+    text-align: center;
+  }
+  
+  
+  #title{
+    width: 400px;
+    position: fixed;
+    top: 19%;
+    left: 50%;
+    margin-left: -200px;
+    text-align: center;
+  }
+  
+  .description{
+    position: fixed;
+    top: 33%;
+    left: 36%;
+    text-align: center;
+  }
+  .sankaku{
+    display: none;
+  }
+  .btn-gray:hover .sankaku{
+    display: inline-block;
+    position: relative;
+  }
+  .btn-gray {
+    text-decoration: none; /* リンクの下線を出さない */	 	 
+    color: #000;
+    background-color: #80807a;
+    border-bottom: 2px solid #5b5a57;
+  }
+  
+  .btn-gray:link {	 	 
+    color: initial; /* 色の指定をリセット */	 	 
+   }	
+  
+   .btn-gray.visited {	 	 
+    color: initial; /* 色の指定をリセット */	 	 
+   }	 
+  
+   .btn-gray1:hover {	 	 
+    color: initial; /* 色の指定をリセット */	 
+    margin-top: 7px;
+    color: #e90a0a;
+    border-bottom: 2px solid #5b5a57;
+  } 
+  
+  .btn-gray2:hover {	 	 
+    color: initial; /* 色の指定をリセット */	 
+    margin-top: 7px;
+    color: #e90a0a;
+    border-bottom: 2px solid #5b5a57;
+  } 
+  .pop-up-button{
+    text-decoration: none; /* リンクの下線を出さない */	 	
+    text-align: center; 
+    color: #000;
+    background-color: #80807a;
+    border-bottom: 2px solid #5b5a57;
+    position: relative;
+    display: inline-block;
+    padding: 0.7rem 4.5rem;
+    top: 55px;
+    left: 45px;
+    cursor: pointer;
+    width: 50%;
+    border-radius: 11px;
+    margin-top: 5px;
+  }
+  
+  .btn {
+    text-decoration: none; /* リンクの下線を出さない */	 	 
+    color: #000;
+    background-color: #fff100;
+    border-bottom: 5px solid #ccc100;
+  }
+   .btn:link {	 	 
+    color: initial; /* 色の指定をリセット */	 	 
+   }	 	 
+   .btn.visited {	 	 
+    color: initial; /* 色の指定をリセット */	 	 
+   }	 	 
+   .btn:hover {	 	 
+    color: initial; /* 色の指定をリセット */	 
+    margin-top: 2px;
+    color: #e90a0a;
+    border-bottom: 2px solid #ccc100;
+  } 
+  .start-btn {
+    text-decoration: none; /* リンクの下線を出さない */	 	 
+    color: #000;
+    background-color: #fff100;
+    border-bottom: 5px solid #ccc100;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 3rem;
+    position: fixed;
+    display: inline-block;
+    padding: 0.7rem 3.5rem;
+    top: 300px;
+    left: 470px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+  }
+  h4{
+    text-align: center;
+    font-size: 30px;
+  }
+  #menu-box{
+    position: fixed;
+    left: 1070px;
+    top:69px;
+  }
+  .menu{
+    width: 140px;
+    padding-left: 60px;
+    margin-left: 40px;
+    border-bottom: 1px solid #000;
+    border-right: 3px solid #000;
+  
+  }
+  ul li ul {
+    display: none;
+  }
+  #menu-box:hover ul li ul li ul{
+    display: none;
+  }
+  
+  
+  #menu-box:hover ul li >ul{
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  #menu-box ul li ul > li:hover > ul{
+    display: block;
+    position: relative;
+  }
+  
+  ul > li{
+    display: inline-block;
+  }
+  ul > li> ul >li{
+    display: inline-block;
+  }
+  ul > li > a{
+    padding: 15px 30px;
+    display: block;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+  }
+  ul > li > span{
+    margin-left: 1.2em;
+  }
+  ul > li:hover > a{
+    background-color: #efefef;
+    color: #444;
+  }
+  
+  /* Submenu */
+  
+  ul li ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  ul li ul li{
+    display: block;
+  }
+  ul li ul li a{
+    background-color: #efefef;
+    color: #444;
+  }
+  ul li ul li a:hover{
+    background-color: #ddd;
+  }
+  
+  .reset-btn{
+    text-decoration: none; /* リンクの下線を出さない */	 	 
+    color: #000;
+    background-color: #fff100;
+    border-bottom: 5px solid #ccc100;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 3rem;
+    position: relative;
+    display: inline-block;
+    padding: 0.7rem 3.5rem;
+    top: 0px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+  }
+  
+  .open {
+    position: fixed;
+    top: 160px;
+      cursor:pointer;
+  }
+  #pop-up {
+      display: none;
+  }
+  .overlay {
+      display: none;
+  }
+  #pop-up:checked + .overlay {
+    animation: fadeup 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+      display: block;
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.6);
+  }
+  .window {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 80vw;
+      max-width: 500px;
+    padding: 20px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 4px;
+      align-items: center;
+      transform: translate(-50%, -50%);
+  }
+  .close {
+    color: rgb(39, 133, 249);
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      cursor:pointer;
+  }
+  @keyframes fadeup {
+    0% {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+   
+  /* 以下ポップアップ用 */
+  .button-test {
+    background: lightblue;
+    color: #fff;
+    padding: 0 2em;
+    border: 0;
+    width: 500px;
+    height: 100px;
+    font-size: 45px;
+    border-radius: 5px;
+    font-weight: 900;
+    position: relative;
+    left: 400px;
+    top: 260px;
+    font-family:'Orbitron';
+  }
+  
+  .button-test:hover {
+    background: lightcoral;
+    cursor: pointer;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background-color: #f4f4f4;
+    margin: 20%;
+    width: 37%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+    border-radius: 4px;
+    
+  }
+  
+  @keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
+  
+  .modal-header h1 {
+    margin: 1rem 0;
+    font-family:'Orbitron';
+  }
+  
+  .modal-header {
+    background: lightblue;
+    padding: 3px 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+    font-family:'Orbitron';
+  }
+  
+  .modalClose {
+    font-size: 2rem;
+  }
+  
+  .modalClose:hover {
+    cursor: pointer;
+  }
+  
+  .modal-body {
+    padding: 10px 20px;
+    color: black;
+  }
+  
+  .modal-footer{
+    height: 200px;
+  }
+  
+  
+  

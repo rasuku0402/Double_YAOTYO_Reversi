@@ -1,0 +1,23 @@
+{
+  "name": "nodejs_lesson",
+  "version": "1.0.0",
+  "description": "まずはハッカソンに向けて共同開発頑張っていきましょう！",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon -r './.module' ./app.js"
+  },
+  "author": "Progate",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mysql": "^2.18.1",
+    "node-fetch": "^3.3.1",
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "keywords": []
+}

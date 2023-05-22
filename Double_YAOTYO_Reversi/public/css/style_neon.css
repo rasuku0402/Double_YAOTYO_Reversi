@@ -1,0 +1,793 @@
+.start-sankaku{
+    display: none;
+}
+#title{
+    position: fixed;
+    width: 400px;
+    position: fixed;
+    top: 22%;
+    left: 50%;
+    margin-left: -200px;
+    text-align: center;
+    border: 2px solid white;
+    color: azure;
+    box-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+    border: double;
+    animation: flicker1 1.5s infinite alternate;
+}
+.description{
+    color: yellow;
+    position: fixed;
+    top: 35%;
+    left: 37%;
+    text-align: center;
+    animation: flicker2 1s infinite alternate;
+}
+.body-top{
+    background-color: black;
+    position: relative;
+    text-align: center;
+    font-family: "Orbitron";
+}
+.btn {
+    text-decoration: none; /* リンクの下線を出さない */	 	 
+    color: lightyellow;
+    animation: flicker3 2s infinite alternate;
+} 	 
+.btn:hover {	
+    cursor: pointer; 	  
+} 
+
+.start-btn {
+    text-decoration: none; /* リンクの下線を出さない */	 	 
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 3rem;
+    position: fixed;
+    display: inline-block;
+    padding: 0.7rem 3.5rem;
+    top: 330px;
+    left: 510px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+}
+.stone1 {
+position: fixed;
+top: 360px;
+left: 1080px;
+width: 168px;
+height: 168px;
+border: solid;
+border-radius: 100px;
+z-index: +3;
+border-color: lightpink;
+box-shadow:
+0 0 10px lightpink,
+0 0 20px pink,
+0 0 40px orangered,
+0 0 80px magenta;
+}
+.stone2 {
+position: fixed;
+top: 360px;
+left: 200px;
+width: 168px;
+height: 168px;
+border: solid;
+border-radius: 100px;
+z-index: +3;
+border-color: azure;
+box-shadow: 
+0 0 10px  azure,
+0 0 20px aqua,
+0 0 40px  dodgerblue,
+0 0 80px blue;
+}
+
+@keyframes flicker1 {
+0%, 18%, 22%, 25%, 53%, 58%, 100% {
+    text-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+    box-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+}
+20%, 24%, 55% {
+    text-shadow: none;
+    box-shadow: none;
+}
+}
+
+@keyframes flicker2 {
+0%{
+    text-shadow: 
+    0 0 5px  yellow,
+    0 0 10px lime,
+    0 0 20px  green,
+    0 0 40px darkgreen;
+}
+100%{
+    text-shadow:
+    0 0 10px  yellow,
+    0 0 20px lime,
+    0 0 40px  green,
+    0 0 80px darkgreen;
+}
+}
+
+@keyframes flicker3 {
+0%,53%, 57%, 100% {
+    text-shadow: 
+    0 0 10px  gold,
+    0 0 20px firebrick,
+    0 0 40px  pink,
+    0 0 80px red;
+}
+55% {
+    text-shadow: none;
+}
+}
+.six{
+    animation: flicker5 1s infinite alternate;
+}
+
+@keyframes flicker5 {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+        0 0 10px  azure,
+        0 0 20px aqua,
+        0 0 40px  dodgerblue,
+        0 0 80px blue;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+    }
+@keyframes flicker6 {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+        0 0 2px  azure,
+        0 0 4px aqua,
+        0 0 8px  dodgerblue,
+        0 0 16px blue;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+.e{
+    animation: flicker6 1.5s infinite alternate;
+}
+.game-header {
+    background: #000;
+    height: auto;
+    margin-bottom: 50px;
+    z-index: +2;
+    /* border-bottom: 1px solid #f0f4f9; */
+}
+
+.header-logo {
+    text-decoration: none;
+    margin-left: 56px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 56px;
+    color: azure;
+    text-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+    display: inline;
+    z-index: +2;
+    font-family: "Orbitron";
+}
+
+.header-logo:hover {
+    animation: flicker4 1.5s infinite alternate;
+}
+@keyframes flicker4 {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+        0 0 10px  azure,
+        0 0 20px aqua,
+        0 0 40px  dodgerblue,
+        0 0 80px blue;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+.body-game{
+    background-color: #000;
+}
+
+.stage{
+    color: azure;
+    text-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+    position:fixed;
+    top: 8%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 22%;
+    padding-top: 30px;
+    letter-spacing: 3px;
+}
+.osero:hover{
+    background-color: #e7ccfe;
+    box-shadow: 
+    0 0 3px #e7ccfe,
+    0 0 6px #ca91fb,
+    0 0 9px #bc75fa;
+    opacity: 0;
+        animation: ripples_anim 0.5s linear infinite;
+}
+@keyframes ripples_anim {
+    0% {
+        opacity: 0;
+    }
+    50% {		
+        opacity: 1;
+    }
+}
+#current-turn{
+font-weight: bold;
+}
+.number-horizontal{
+    top: 18%;
+    left: 14%;
+    position:fixed;
+    font-size: 30px;
+    letter-spacing: 15px;
+    color: azure;
+    text-shadow: 
+    0 0 5px  azure,
+    0 0 10px aqua,
+    0 0 20px  dodgerblue,
+    0 0 40px blue;
+}
+.number-vertical{
+    position:fixed;
+    flex-direction: column;
+    top: 24%;
+    left: 10%;
+    font-size: 30px;
+    color: azure;
+    text-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+}
+.number-vertical>div{
+    margin-bottom: 19px;
+}
+.table{
+    position: fixed;
+    top: 23%;
+    left: 12%;
+}
+td {
+position:fixed;
+width: 50px;
+height: 50px;
+text-align: center;
+vertical-align: middle;
+font-size: 0;
+position: relative;
+}
+
+td:nth-child(1),
+td:nth-child(2),
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6),
+td:nth-child(7),
+td:nth-child(8) {
+/*background: linear-gradient(45deg, #B67B03 0%, #DAAF08 45%, #FEE9A0 70%, #DAAF08 85%, #B67B03 90% 100%);*/
+background: rgb(233, 233, 233)
+/* background-color: rgba(250, 254, 235, 0.24); */
+/* background-image: -webkit-linear-gradient(45deg,transparent 60%,rgba(255,255,255,.3) 45%,rgba(255,255,255,.3) 45%,transparent 100%);*/ 
+}
+
+table:nth-of-type(odd){
+    background-color: azure;
+    box-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+}
+
+button.osero {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: transparent;
+border: none;
+cursor: pointer;
+z-index: +1;
+}
+
+button.reset {
+padding: 100px;
+}
+
+.stone {
+position: absolute;
+top: 2.5px;
+bottom: 0;
+left: 4.5px;
+width: 42px;
+height: 42px;
+border-radius: 21px;
+z-index: +3;
+}
+
+.stone[data-state="0"] {
+display: none;
+}
+
+.stone[data-state="1"] {
+    background-color: black;
+    border-bottom: 2px solid white;
+    box-shadow: 
+    0 0 2px  azure,
+    0 0 4px aqua,
+    0 0 8px  dodgerblue,
+    0 0 16px blue;
+}
+
+.stone[data-state="-1"] {
+    background-color: white;
+    color: black;
+    border-bottom: 2px solid black;
+    box-shadow: 
+    0 0 2px  azure,
+    0 0 4px aqua,
+    0 0 8px  dodgerblue,
+    0 0 16px blue;
+}
+
+.display-blackstone {
+    position: relative;
+    top: 2.5px;
+    bottom: 0;
+    left: 4.5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 21px;
+    background-color: black;
+    border-bottom: 2px solid rgb(255, 255, 255);
+    box-shadow: 
+    0 0 5px azure,
+    0 0 10px aqua;
+}
+
+.display-whitestone {
+    position: relative;
+    top: 2.5px;
+    bottom: 0;
+    left: 4.5px;
+    width: 21px;
+    height: 21px;
+    border-radius: 21px;
+    background-color: white;
+    border-bottom: 2px solid black;
+    box-shadow: 
+    0 0 5px azure,
+    0 0 10px aqua;
+}
+
+.display{
+    font-size: 30px;
+    top: 23px;
+    color: azure;
+    text-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+}
+
+
+/* .user-posseible {
+background-color: pink;
+} */
+
+
+.display1{
+    color: azure;
+    text-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+    font-size: 20px;
+    position: fixed;
+    top:70px;
+    left: 55%;
+    display: flex;
+    flex-direction: row;
+}
+.display2{
+    color: azure;
+    text-shadow: 
+    0 0 10px  azure,
+    0 0 20px aqua,
+    0 0 40px  dodgerblue,
+    0 0 80px blue;
+    font-size: 20px;
+    position: fixed;
+    top:70px;
+    left: 68%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.flip_of_black {
+animation-name: black_active;
+animation-duration: 0.5s;
+}
+.flip_of_white {
+animation-name: white_active;
+animation-duration: 0.5s;
+}
+
+@keyframes black_active{
+0% {
+    transform: perspective(400px) rotateX(0);
+}
+50% {
+    transform: perspective(400px) rotateX(90deg);
+}
+100% {
+    transform: perspective(400px) rotateX(0);
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+}
+
+@keyframes white_active{
+0% {
+    transform: perspective(400px) rotateX(0);
+}
+50% {
+    transform: perspective(400px) rotateX(90deg);
+}
+100% {
+    transform: perspective(400px) rotateX(0);
+    background-color: black;
+    border-bottom: 2px solid white;
+}
+}
+.log{
+position: fixed;
+top: 155px;
+left: 55%;
+height: 20px;
+font-family: Arial, Helvetica, sans-serif;
+border:3px solid #777676;
+background-color: #55a097;
+border-bottom: 10px solid #3c3c3c;
+border-right:  5px solid #3c3c3c;
+color: white;
+text-shadow: 
+    0 0 2px  azure,
+    0 0 4px aqua,
+    0 0 8px  dodgerblue,
+    0 0 16px blue;
+box-shadow: 
+    0 0 10px  azure,
+    0 0 20px #55a097,
+    0 0 40px  #31a295,
+    0 0 80px #02a592;
+}
+.log-text{
+position: relative;
+left: 105px;
+font-family: "Orbitron";
+}
+/* スクロールバーのスタイル設定 */
+.log-window {
+height: 450px; /* 小窓の高さ */
+width: 300px;
+overflow: auto; /* スクロールバーを表示 */
+border-top: 1px solid #ccc; /* 枠線を追加 */
+border-left: 1px solid #ccc; /* 枠線を追加 */
+border-right: 1px solid #ccc; /* 枠線を追加 */
+padding: 10px; /* 内側の余白を設定 */
+background: radial-gradient(rgb(255, 255, 255), rgb(210, 210, 210));
+box-shadow: 
+    0 0 10px  azure,
+    0 0 20px #55a097,
+    0 0 40px  #31a295,
+    0 0 80px #02a592;
+}
+
+.sankaku{
+display: none;
+}
+
+#menu-box{
+position: fixed;
+left: 1070px;
+top:69px;
+color: azure;
+text-shadow: 
+    0 0 5px  azure,
+    0 0 10px aqua,
+    0 0 15px  dodgerblue,
+    0 0 20px blue;
+}
+.menu{
+    width: 140px;
+    padding-left: 60px;
+    margin-left: 40px;
+    border-bottom: 1px solid #000;
+    border-right: 3px solid #000;
+    box-shadow: 
+    0 0 3px  azure,
+    0 0 6px aqua,
+    0 0 9px  dodgerblue,
+    0 0 12px blue;
+}
+ul li ul {
+display: none;
+}
+#menu-box:hover ul li ul li ul{
+display: none;
+}
+
+
+#menu-box:hover ul li >ul{
+display: block;
+position: relative;
+cursor: pointer;
+}
+
+#menu-box ul li ul > li:hover > ul{
+display: block;
+position: relative;
+}
+
+ul > li{
+display: inline-block;
+}
+ul > li> ul >li{
+display: inline-block;
+}
+ul > li > a{
+padding: 15px 30px;
+display: block;
+font-size: 0.8em;
+text-transform: uppercase;
+letter-spacing: .2em;
+}
+ul > li > span{
+margin-left: 1.2em;
+}
+ul > li:hover > a{
+background-color: #efefef;
+color: #444;
+}
+
+/* Submenu */
+
+ul li ul{
+position: absolute;
+top: 0;
+left: 0;
+}
+
+ul li ul li{
+display: block;
+}
+ul li ul li a{
+background-color: #efefef;
+color: #444;
+}
+ul li ul li a:hover{
+background-color: #ddd;
+}
+
+.reset-btn{
+text-decoration: none; /* リンクの下線を出さない */	 	 
+color: #000;
+background-color: #fff100;
+border-bottom: 5px solid #ccc100;
+font-size: 1.6rem;
+font-weight: 700;
+line-height: 3rem;
+position: relative;
+display: inline-block;
+padding: 0.7rem 3.5rem;
+top: 0px;
+cursor: pointer;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+-webkit-transition: all 0.3s;
+transition: all 0.3s;
+text-align: center;
+vertical-align: middle;
+text-decoration: none;
+letter-spacing: 0.1em;
+color: #212529;
+border-radius: 0.5rem;
+}
+
+.open {
+position: fixed;
+top: 160px;
+    cursor:pointer;
+}
+#pop-up {
+    display: none;
+}
+.overlay {
+    display: none;
+}
+#pop-up:checked + .overlay {
+animation: fadeup 1s cubic-bezier(0.33, 1, 0.68, 1) 1 forwards;
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.6);
+}
+.window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    max-width: 500px;
+padding: 20px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 4px;
+    align-items: center;
+    transform: translate(-50%, -50%);
+}
+.close {
+color: rgb(39, 133, 249);
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    cursor:pointer;
+}
+@keyframes fadeup {
+0% {
+    transform: translateY(30px);
+    opacity: 0;
+}
+80% {
+    opacity: 1;
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* 以下ポップアップ用 */
+.button-test {
+background: lightblue;
+color: #fff;
+padding: 0 2em;
+border: 0;
+width: 500px;
+height: 100px;
+font-size: 45px;
+border-radius: 5px;
+font-weight: 900;
+position: relative;
+left: 400px;
+top: 260px;
+font-family:'Orbitron';
+}
+
+.button-test:hover {
+background: lightcoral;
+cursor: pointer;
+}
+
+.modal {
+display: none;
+position: fixed;
+z-index: 1;
+left: 0;
+top: 0;
+height: 100%;
+width: 100%;
+background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+background-color: #f4f4f4;
+margin: 20%;
+width: 37%;
+box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+animation-name: modalopen;
+animation-duration: 1s;
+border-radius: 4px;
+
+}
+
+@keyframes modalopen {
+from {opacity: 0}
+to {opacity: 1}
+}
+
+.modal-header h1 {
+margin: 1rem 0;
+font-family:'Orbitron';
+}
+
+.modal-header {
+background: lightblue;
+padding: 3px 15px;
+display: flex;
+justify-content: space-between;
+border-radius: 4px;
+font-family:'Orbitron';
+}
+
+.modalClose {
+font-size: 2rem;
+}
+
+.modalClose:hover {
+cursor: pointer;
+}
+
+.modal-body {
+padding: 10px 20px;
+color: black;
+}
+
+.modal-footer{
+height: 200px;
+}
+
+.area{
+    background: black;  
+    width: 100%;
+    height:100%;
+    position: fixed;
+    z-index: -1;
+
+  }
+
+  
